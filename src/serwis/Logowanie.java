@@ -142,7 +142,7 @@ public class Logowanie extends JFrame {
 		
 		try {
 			// statement = conn.createStatement();
-			String queryString = "select * from konto";// zapytanie wyci�gaj�ce
+			String queryString = "select * from konto";// zapytanie wyciągające
 														// odp. dane z bazy
 			Statement statement = conn.createStatement();
 			ResultSet rs = statement.executeQuery(queryString);// wykonanie
