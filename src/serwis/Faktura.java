@@ -28,8 +28,7 @@ public class Faktura extends JFrame {
 
 		Faktura.setId((id));
 
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage("C:\\Users\\karol\\Desktop\\Studia\\Inżynierka\\Serwis\\Logo\\RT.ico"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\R&T.png"));
 		setTitle("Faktura");// ustawienia jframa
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 725, 750);

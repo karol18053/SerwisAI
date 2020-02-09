@@ -35,8 +35,7 @@ public class Ksiegowy extends JFrame{
 
 	public Ksiegowy(){
 		
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage("C:\\Users\\karol\\Desktop\\Studia\\Inżynierka\\Serwis\\Logo\\RT.ico"));		
+		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\R&T.png"));		
 		setTitle("R&T SERWIS: Księgowy");//ustawienia jframa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1024, 734);//800x600

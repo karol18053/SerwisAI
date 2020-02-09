@@ -43,8 +43,7 @@ public class Info extends JFrame {
 		lblInfo.setBounds(5, 10, 390, 69);
 		panel.add(lblInfo);
 		setTitle("Coś poszło nie tak!");
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage("C:\\Users\\karol\\Desktop\\Studia\\Inżynierka\\Serwis\\Logo\\RT.ico"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\R&T.png"));
 		setVisible(true);
 		setBounds(0, 0, 400, 150);
 		setLocationRelativeTo(null);

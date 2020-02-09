@@ -31,8 +31,7 @@ public class Logowanie extends JFrame {
 	private JPanel panel;// tworzenie i utawienie panelu (tsa)
 
 	public Logowanie() {// konstruktor
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage("C:\\Users\\karol\\Desktop\\Studia\\Inżynierka\\Serwis\\Logo\\RT.ico"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\R&T.png"));
 		setTitle("R&T SERWIS wita - zaloguj się!");// ustawienia jframa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 408, 232);

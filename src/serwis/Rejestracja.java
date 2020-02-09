@@ -49,8 +49,7 @@ public class Rejestracja extends JFrame {
 
 	public Rejestracja() {
 		// tworzenie okna nadaniemu wymiaru i przypisanie ikony
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage("C:\\Users\\karol\\Desktop\\Studia\\Inżynierka\\Serwis\\Logo\\RT.ico"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\R&T.png"));
 		setTitle("R&T SERWIS: Rejestracja");// ustawienia jframa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1024, 734);// 800x600

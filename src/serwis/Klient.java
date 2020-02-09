@@ -387,8 +387,7 @@ public class Klient extends JPanel {
 		// Create and set up the window.
 		// JFrame frame = new JFrame("R&T SERWIS: Kierownik");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage("C:\\Users\\karol\\Desktop\\Studia\\Inżynierka\\Serwis\\Logo\\RT.ico"));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("img\\R&T.png"));
 		frame.setBounds(0, 0, 1024, 734);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);

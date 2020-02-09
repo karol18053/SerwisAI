@@ -44,8 +44,7 @@ public class Sprawdz extends JFrame {
 		panel.add(lblInfo);
 		
 		setTitle("Sprawdzanie gwarancji sprzętu!");
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage("C:\\Users\\karol\\Desktop\\Studia\\Inżynierka\\Serwis\\Logo\\RT.ico"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\R&T.png"));
 		setVisible(true);
 		setBounds(0, 0, 400, 150);
 		setLocationRelativeTo(null);
