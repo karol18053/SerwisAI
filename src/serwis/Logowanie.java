@@ -11,10 +11,12 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.Toolkit;
+import szyfrowanie.*;
 
 public class Logowanie extends JFrame {
 
@@ -112,7 +114,6 @@ public class Logowanie extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -139,7 +140,7 @@ public class Logowanie extends JFrame {
 //		baza.dbConnect("jdbc:mysql://www.mkwk018.cba.pl/mysql/db_structure.php?server=1&db="
 //				+ "karol18053&token=ce3a57f189cc0511fa98f172db548cb0/karol18053?user=karol18053&"
 //				+ "password=P0l@nk@3018053");
-		
+
 		try {
 			// statement = conn.createStatement();
 			String queryString = "select * from konto";// zapytanie wyciągające
@@ -148,26 +149,31 @@ public class Logowanie extends JFrame {
 			ResultSet rs = statement.executeQuery(queryString);// wykonanie
 																// zapytanie
 			String nazwaw = textField.getText();// pobieranie loginu
+
 			@SuppressWarnings("deprecation")
-			String haslow = passwordField.getText();// pobieranie has�a
+			String haslow = null;
+			haslow = passwordField.getText();// pobieranie hasła
+
+			// tu wywołanie funkcji szyfrującej
+
+			EnkoderDecocer en = new EnkoderDecocer();
 
 			while (rs.next()) {
-				
+
 				// System.out.println(rs.getString("ID_Konto"));
 				// System.out.println(rs.getString("Login"));
 				// System.out.println(rs.getString("Haslo"));
 
-				if (nazwaw.equals(rs.getString("Login")) && haslow.equals(rs.getString("Haslo"))
+				if (nazwaw.equals(rs.getString("Login")) && haslow.equals(en.decodePassw(rs.getString("Haslo")))
 						&& rs.getString("Status").equals("1")) {// weryfikacja
 																// danych
-
 					// System.out.println("zalogowany");
 					// System.out.println(rs.getString("ID_Konto"));
 
 					konto = rs.getString("Login");
 					id = rs.getString("ID_Konto");
 					Klient kl = new Klient(konto, id);
-					System.out.println(id);
+					// System.out.println(id);
 
 					Klient.GUI();
 					kl.setVisible(true);
@@ -176,7 +182,7 @@ public class Logowanie extends JFrame {
 					continue;
 				}
 
-				else if (nazwaw.equals(rs.getString("Login")) && haslow.equals(rs.getString("Haslo"))
+				else if (nazwaw.equals(rs.getString("Login")) && haslow.equals(en.decodePassw(rs.getString("Haslo")))
 						&& rs.getString("Status").equals("3")) {// weryfikacja
 																// danych
 
@@ -191,7 +197,7 @@ public class Logowanie extends JFrame {
 					continue;
 				}
 
-				else if (nazwaw.equals(rs.getString("Login")) && haslow.equals(rs.getString("Haslo"))
+				else if (nazwaw.equals(rs.getString("Login")) && haslow.equals(en.decodePassw(rs.getString("Haslo")))
 						&& rs.getString("Status").equals("4")) {// weryfikacja
 																// danych
 
@@ -206,7 +212,7 @@ public class Logowanie extends JFrame {
 					continue;
 				}
 
-				else if (nazwaw.equals(rs.getString("Login")) && haslow.equals(rs.getString("Haslo"))
+				else if (nazwaw.equals(rs.getString("Login")) && haslow.equals(en.decodePassw(rs.getString("Haslo")))
 						&& rs.getString("Status").equals("2")) {// weryfikacja
 																// danych
 
@@ -215,7 +221,7 @@ public class Logowanie extends JFrame {
 
 					konto = rs.getString("Login");
 					id = rs.getString("ID_Konto");
-					
+
 					Serwisant s = new Serwisant(konto, id);
 					// System.out.println(konto);
 
@@ -223,12 +229,55 @@ public class Logowanie extends JFrame {
 					setVisible(false);
 
 					continue;
+
+				} else if (nazwaw.equals(rs.getString("Login")) != haslow.equals(en.decodePassw(rs.getString("Haslo")))
+						&& rs.getString("Status").equals("1")) {
+					// do poprawki
+					Logowanie l = new Logowanie();
+					JLabel lblBlad = new JLabel("Błednydny login lub hasło");// wyświetlany
+																				// text
+					lblBlad.setFont(new Font("Tahoma", Font.BOLD, 12));
+					lblBlad.setBounds(115, 27, 164, 20);
+					lblBlad.setForeground(Color.RED);
+					l.panel.add(lblBlad);
+
+					l.setVisible(true);
+					setVisible(false);
+
 				} else if (nazwaw.equals(rs.getString("Login")) != haslow.equals(rs.getString("Haslo"))
 						&& rs.getString("Status").equals("2")) {
 					// do poprawki
 					Logowanie l = new Logowanie();
 					JLabel lblBlad = new JLabel("Błednydny login lub hasło");// wyświetlany
-																			// text
+																				// text
+					lblBlad.setFont(new Font("Tahoma", Font.BOLD, 12));
+					lblBlad.setBounds(115, 27, 164, 20);
+					lblBlad.setForeground(Color.RED);
+					l.panel.add(lblBlad);
+
+					l.setVisible(true);
+					setVisible(false);
+
+				} else if (nazwaw.equals(rs.getString("Login")) != haslow.equals(rs.getString("Haslo"))
+						&& rs.getString("Status").equals("3")) {
+					// do poprawki
+					Logowanie l = new Logowanie();
+					JLabel lblBlad = new JLabel("Błednydny login lub hasło");// wyświetlany
+																				// text
+					lblBlad.setFont(new Font("Tahoma", Font.BOLD, 12));
+					lblBlad.setBounds(115, 27, 164, 20);
+					lblBlad.setForeground(Color.RED);
+					l.panel.add(lblBlad);
+
+					l.setVisible(true);
+					setVisible(false);
+
+				} else if (nazwaw.equals(rs.getString("Login")) != haslow.equals(rs.getString("Haslo"))
+						&& rs.getString("Status").equals("4")) {
+					// do poprawki
+					Logowanie l = new Logowanie();
+					JLabel lblBlad = new JLabel("Błednydny login lub hasło");// wyświetlany
+																				// text
 					lblBlad.setFont(new Font("Tahoma", Font.BOLD, 12));
 					lblBlad.setBounds(115, 27, 164, 20);
 					lblBlad.setForeground(Color.RED);
@@ -238,9 +287,25 @@ public class Logowanie extends JFrame {
 					setVisible(false);
 
 				}
+//				else if ((nazwaw != (rs.getString("Login"))) || (haslow != (rs.getString("Haslo")))
+//						){
+//					// do poprawki
+//					Logowanie l = new Logowanie();
+//					JLabel lblBlad = new JLabel("Błednydny login lub hasło");// wyświetlany
+//																			// text
+//					lblBlad.setFont(new Font("Tahoma", Font.BOLD, 12));
+//					lblBlad.setBounds(115, 27, 164, 20);
+//					lblBlad.setForeground(Color.RED);
+//					l.panel.add(lblBlad);
+//
+//					l.setVisible(true);
+//					setVisible(false);
+//					
+//				}
 
 			}
-			
+
+			haslow = null;
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -288,7 +353,7 @@ public class Logowanie extends JFrame {
 			try {
 				// Ustawiamy dane dotycz�ce podłączenia
 				conn = DriverManager.getConnection(polaczenieURL);
-				//System.out.println ("Po��czono z baz�");
+				// System.out.println ("Po��czono z baz�");
 			}
 
 			catch (SQLException e) {

@@ -37,12 +37,12 @@ public class Info extends JFrame {
 		okButton.setBounds(150, 80, 89, 23);
 		panel.add(okButton);
 		
-		JLabel lblInfo = new JLabel("Sprawd\u017A czy wszystkie dane \r\nzosta\u0142y wprowadzone poprawnie");// wyświetlany text
+		JLabel lblInfo = new JLabel("Sprawdz czy wszystkie dane zostały wprowadzone poprawnie");// wyświetlany text
 		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInfo.setForeground(Color.RED);
 		lblInfo.setBounds(5, 10, 390, 69);
 		panel.add(lblInfo);
-		setTitle("Co� posz�o nie tak!");
+		setTitle("Coś poszło nie tak!");
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage("C:\\Users\\karol\\Desktop\\Studia\\Inżynierka\\Serwis\\Logo\\RT.ico"));
 		setVisible(true);

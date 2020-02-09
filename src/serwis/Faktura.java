@@ -63,8 +63,8 @@ public class Faktura extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
-		Color kolor = new Color(0, 128, 255);
-		panel.setBackground(kolor);
+		Color kolor = new Color(0, 0, 255);
+		panel.setBackground(Color.GRAY);
 		panel.setBounds(0, 0, 719, 721);
 		contentPane.add(panel);
 		panel.setLayout(null);

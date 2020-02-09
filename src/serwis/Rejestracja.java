@@ -316,19 +316,14 @@ public class Rejestracja extends JFrame {
 	}
 
 	/*
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-
-				Rejestracja frame = new Rejestracja();
-				frame.setVisible(true);
-
-			}
-		});
-	}
-	*/
+	 * public static void main(String[] args) { // TODO Auto-generated method stub
+	 * 
+	 * EventQueue.invokeLater(new Runnable() { public void run() {
+	 * 
+	 * Rejestracja frame = new Rejestracja(); frame.setVisible(true);
+	 * 
+	 * } }); }
+	 */
 
 	public void Dodaj_uzytkownika() {
 
@@ -350,7 +345,7 @@ public class Rejestracja extends JFrame {
 		String haslo = passwordFieldHaslo.getText();
 		@SuppressWarnings("deprecation")
 		String powtorz_haslo = passwordFieldPHaslo.getText();
-		
+
 		boolean akceptacja = chckbxAkceptuje.getState();
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
@@ -376,20 +371,20 @@ public class Rejestracja extends JFrame {
 
 				if (imie != null && nazwisko != null && ulica != null && nr_domu != null && miejscowosc != null
 						&& kod_pocztowy != null && pesel != null && nazwa_firmy != null && nip != null
-						&& telefon != null && email != null && login != null && haslo != null
-						&& powtorz_haslo != null && akceptacja == true) {
+						&& telefon != null && email != null && login != null && haslo != null && powtorz_haslo != null
+						&& akceptacja == true) {
 					// działa
-					
+
 					int kontoK = rs.getInt("konto");
 					int klientD = rs.getInt("dklient");
 					int klientA = rs.getInt("aklient");
 
 					if (haslo.equals(powtorz_haslo)) {
 
-					 String konto = "insert into konto (Login, Haslo, Status) values('" + login + "','" + haslo
+						String konto = "insert into konto (Login, Haslo, Status) values('" + login + "','" + haslo
 								+ "'," + " '1')";
 
-					statement.executeUpdate(konto);
+						statement.executeUpdate(konto);
 
 					} else {
 						new Info();
@@ -405,7 +400,7 @@ public class Rejestracja extends JFrame {
 							+ "values('" + ulica + "','" + nr_domu + "','" + miejscowosc + "','" + kod_pocztowy + "')";
 					statement.executeUpdate(adr_klient);
 					// działa
-					
+
 //					System.out.println(kontoK);
 //					System.out.println(klientD);
 //					System.out.println(klientA);
@@ -469,7 +464,7 @@ public class Rejestracja extends JFrame {
 			try {
 				// Ustawiamy dane dotyczące podłączenia
 				conn = DriverManager.getConnection(polaczenieURL);
-				//System.out.println("Połączono z bazą");
+				// System.out.println("Połączono z bazą");
 			}
 
 			catch (SQLException e) {
