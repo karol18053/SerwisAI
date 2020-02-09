@@ -11,7 +11,6 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -122,9 +121,9 @@ public class Logowanie extends JFrame {
 					Logowanie frame = new Logowanie();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					////
+					System.out.println("Problem z uruchimieniem programu!!!");
 				}
-				assert (this != null);
+				//assert (this != null);
 			}
 		});
 
@@ -151,8 +150,7 @@ public class Logowanie extends JFrame {
 			String nazwaw = textField.getText();// pobieranie loginu
 
 			@SuppressWarnings("deprecation")
-			String haslow = null;
-			haslow = passwordField.getText();// pobieranie hasła
+			String haslow = passwordField.getText();// pobieranie hasła
 
 			// tu wywołanie funkcji szyfrującej
 
@@ -230,21 +228,23 @@ public class Logowanie extends JFrame {
 
 					continue;
 
-				} else if (nazwaw.equals(rs.getString("Login")) != haslow.equals(en.decodePassw(rs.getString("Haslo")))
-						&& rs.getString("Status").equals("1")) {
-					// do poprawki
-					Logowanie l = new Logowanie();
-					JLabel lblBlad = new JLabel("Błednydny login lub hasło");// wyświetlany
-																				// text
-					lblBlad.setFont(new Font("Tahoma", Font.BOLD, 12));
-					lblBlad.setBounds(115, 27, 164, 20);
-					lblBlad.setForeground(Color.RED);
-					l.panel.add(lblBlad);
-
-					l.setVisible(true);
-					setVisible(false);
-
-				} else if (nazwaw.equals(rs.getString("Login")) != haslow.equals(rs.getString("Haslo"))
+				} 
+//					else if (nazwaw.equals(rs.getString("Login")) != haslow.equals(en.decodePassw(rs.getString("Haslo")))
+//						&& rs.getString("Status").equals("1")) {
+//					// do poprawki
+//					Logowanie l = new Logowanie();
+//					JLabel lblBlad = new JLabel("Błednydny login lub hasło");// wyświetlany
+//																				// text
+//					lblBlad.setFont(new Font("Tahoma", Font.BOLD, 12));
+//					lblBlad.setBounds(115, 27, 164, 20);
+//					lblBlad.setForeground(Color.RED);
+//					l.panel.add(lblBlad);
+//
+//					l.setVisible(true);
+//					setVisible(false);
+//
+//				} 
+					else if (nazwaw.equals(rs.getString("Login")) != haslow.equals(rs.getString("Haslo"))
 						&& rs.getString("Status").equals("2")) {
 					// do poprawki
 					Logowanie l = new Logowanie();

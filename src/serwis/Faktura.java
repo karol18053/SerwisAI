@@ -15,9 +15,6 @@ import java.awt.Font;
 
 public class Faktura extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
@@ -27,25 +24,6 @@ public class Faktura extends JFrame {
 	public Statement statementmysql;
 	private static String id;
 
-	/**
-	 * Launch the application.
-	 */
-	// public static void main(String[] args) {
-	// EventQueue.invokeLater(new Runnable() {
-	// public void run() {
-	// try {
-	// Faktura frame = new Faktura();
-	// frame.setVisible(true);
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// }
-	// }
-	// });
-	// }
-
-	/**
-	 * Create the frame.
-	 */
 	public Faktura(String id) {
 
 		Faktura.setId((id));
@@ -63,7 +41,7 @@ public class Faktura extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
-		Color kolor = new Color(0, 0, 255);
+		//Color kolor = new Color(0, 0, 255);
 		panel.setBackground(Color.GRAY);
 		panel.setBounds(0, 0, 719, 721);
 		contentPane.add(panel);
@@ -211,8 +189,8 @@ public class Faktura extends JFrame {
 			// System.out.println(id_klient);
 			String queryString = "select f.Data_Wystawienia, f.Termin_Platnosci FROM klient k, konto ko, "
 					+ "faktura f, faktura_dodatkowe fd where f.ID_Faktura_Dodatkowe = fd.ID_Faktura_Dodatkowe "
-					+ "and fd.ID_Klient = k.ID_Klient and k.ID_Konto = ko.ID_Konto and " + 
-					"ko.ID_Konto = '" + id + "' ORDER by f.ID_Faktura DESC limit 1";// zapytanie
+					+ "and fd.ID_Klient = k.ID_Klient and k.ID_Konto = ko.ID_Konto and " + "ko.ID_Konto = '" + id
+					+ "' ORDER by f.ID_Faktura DESC limit 1";// zapytanie
 			// wyciągające
 			// odp.
 			// dane
@@ -264,8 +242,8 @@ public class Faktura extends JFrame {
 			// System.out.println(id_klient);
 			String queryString = "select f.Kwota_Netto FROM klient k, konto ko, faktura f, "
 					+ "faktura_dodatkowe fd where f.ID_Faktura_Dodatkowe = fd.ID_Faktura_Dodatkowe and "
-					+ "fd.ID_Klient = k.ID_Klient and k.ID_Konto = ko.ID_Konto and " + "ko.ID_Konto = '" + id + 
-					"' ORDER by f.ID_Faktura DESC limit 1";// zapytanie
+					+ "fd.ID_Klient = k.ID_Klient and k.ID_Konto = ko.ID_Konto and " + "ko.ID_Konto = '" + id
+					+ "' ORDER by f.ID_Faktura DESC limit 1";// zapytanie
 			// wyciągające
 			// odp.
 			// dane

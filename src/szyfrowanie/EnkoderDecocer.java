@@ -2,7 +2,7 @@ package szyfrowanie;
 
 public class EnkoderDecocer {
 
-	public static String encodePassw(String password) {
+	public String encodePassw(String password) {
 		String result = "";
 		int lenght = password.length();
 		char d;
@@ -15,7 +15,7 @@ public class EnkoderDecocer {
 		return result;
 	}
 
-	public static String decodePassw(String password) {
+	public String decodePassw(String password) {
 		String result = "";
 		int lenght = password.length();
 		char d;

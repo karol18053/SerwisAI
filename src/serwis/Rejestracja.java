@@ -21,6 +21,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import szyfrowanie.EnkoderDecocer;
+
 public class Rejestracja extends JFrame {
 
 	private static final long serialVersionUID = 1L;// deklaracja potrzebnych
@@ -366,6 +368,8 @@ public class Rejestracja extends JFrame {
 
 			statement = conn.createStatement();
 			ResultSet rs = statement.executeQuery(id_tabele);
+			
+			EnkoderDecocer en = new EnkoderDecocer();
 
 			while (rs.next()) {
 
@@ -381,7 +385,7 @@ public class Rejestracja extends JFrame {
 
 					if (haslo.equals(powtorz_haslo)) {
 
-						String konto = "insert into konto (Login, Haslo, Status) values('" + login + "','" + haslo
+						String konto = "insert into konto (Login, Haslo, Status) values('" + login + "','" + en.encodePassw(haslo)
 								+ "'," + " '1')";
 
 						statement.executeUpdate(konto);
@@ -418,7 +422,7 @@ public class Rejestracja extends JFrame {
 			}
 			rs.close();
 
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
