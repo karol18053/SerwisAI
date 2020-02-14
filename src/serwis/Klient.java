@@ -51,13 +51,15 @@ public class Klient extends JPanel {
 	public Color kolor = new Color(0, 128, 255);
 
 	private static String konto;
-	private static String id;
+	private static String id_klient;
+	private static String id_konto;
 
-	public Klient(String konto, String id) {
+	public Klient(String konto, String id_klient, String id_konto) {
 		super(new GridLayout(1, 1));
 
 		Klient.setKonto(konto);
-		Klient.setId((id));
+		Klient.setIdKlient((id_klient));
+		Klient.setIdKonto((id_konto));
 
 		JTabbedPane tabbedPane = new JTabbedPane();
 		ImageIcon icon = null;
@@ -188,7 +190,7 @@ public class Klient extends JPanel {
 		lblAktualne_zgloszenia.setForeground(Color.BLACK);
 		panel1.add(lblAktualne_zgloszenia);
 
-		Aktualne_Zlecenia(id);
+		Aktualne_Zlecenia(id_klient);
 
 		panel1.add(Aktualizuj_Aktualne());
 
@@ -219,7 +221,7 @@ public class Klient extends JPanel {
 		lblHistoria_zgloszen.setForeground(Color.BLACK);
 		panel2.add(lblHistoria_zgloszen);
 
-		Aktualizuj_Zakonczone(id);
+		Aktualizuj_Zakonczone(id_klient);
 		////////////////////////////////
 
 		panel2.add(Aktualizuj_Zakonczone());
@@ -245,7 +247,7 @@ public class Klient extends JPanel {
 		lblRozliczenia.setForeground(Color.BLACK);
 		panel3.add(lblRozliczenia);
 
-		Aktualizuj_Rozliczone(id);
+		Aktualizuj_Rozliczone(id_klient);
 
 		panel3.add(Aktualizuj_Rozliczone());
 
@@ -262,7 +264,7 @@ public class Klient extends JPanel {
 			String queryString = "select dk.Nazwa_Firmy, dk.NIP, k.Imie, k.Nazwisko, ak.Ulica, ak.Nr_domu, "
 					+ "ak.Miejscowosc, ak.Kod_Pocztowy, k.Telefon, k.Email from klient k, adres_klient ak, "
 					+ "dodatkowe_klient dk WHERE k.ID_Dodatkowe_Klient = dk.ID_Dodatkowe_Klient and "
-					+ "k.ID_Adres_Klient = ak.ID_Adres_Klient and k.ID_Konto='" + id + "'";// zapytanie
+					+ "k.ID_Adres_Klient = ak.ID_Adres_Klient and k.ID_Konto='" + id_konto + "'";// zapytanie
 																							// wyciągające
 																							// odp.
 																							// dane
@@ -354,12 +356,20 @@ public class Klient extends JPanel {
 	// });
 	// }
 
-	public static String getId() {
-		return id;
+	public static String getIdKlient() {
+		return id_klient;
 	}
 
-	public static void setId(String id) {
-		Klient.id = id;
+	public static void setIdKlient(String setIdKlient) {
+		Klient.id_klient = setIdKlient;
+	}
+	
+	public static String getIdKonto() {
+		return id_konto;
+	}
+
+	public static void setIdKonto(String setIdKonto) {
+		Klient.id_konto = setIdKonto;
 	}
 
 	public static String getKonto() {
@@ -393,9 +403,9 @@ public class Klient extends JPanel {
 		frame.setResizable(false);
 
 		// Create and set up the content pane.
-		JComponent newContentPane = new Klient(getKonto(), getId());
+		JComponent newContentPane = new Klient(getKonto(), getIdKlient(), getIdKonto());
 		newContentPane.setOpaque(true); // content panes must be opaque
-		frame.getContentPane().add(new Klient(getKonto(), getId()), BorderLayout.CENTER);
+		frame.getContentPane().add(new Klient(getKonto(), getIdKlient(), getIdKonto()), BorderLayout.CENTER);
 
 		// Display the window.
 		frame.pack();
@@ -577,15 +587,15 @@ public class Klient extends JPanel {
 
 		try {
 
-			String id_klient = "select kl.ID_Klient, max(zd.ID_Zlecenie_Dodatkowe)+1 as numer from konto k, "
-					+ "klient kl, zlecenie_dodatkowe zd where k.ID_Konto = kl.ID_Konto and " + "k.ID_Konto =" + id + "";// zapytanie
+			String id_klienta = "select kl.ID_Klient, max(zd.ID_Zlecenie_Dodatkowe)+1 as numer from konto k, "
+					+ "klient kl, zlecenie_dodatkowe zd where k.ID_Konto = kl.ID_Konto and " + "k.ID_Konto =" + id_konto + "";// zapytanie
 
 			// String id_zleccenied = "select max(ID_Zlecenie_Dodatkowe) as
 			// numer from zlecenie_dodatkowe";// zapytanie
 			// bazy
 			// bazy
 			statement = conn.createStatement();
-			ResultSet rs = statement.executeQuery(id_klient);
+			ResultSet rs = statement.executeQuery(id_klienta);
 			// ResultSet rs2 = statement.executeQuery(id_zleccenied);
 
 			while (rs.next()) {
@@ -861,7 +871,7 @@ public class Klient extends JPanel {
 
 		public void actionPerformed(ActionEvent event) {
 
-			Aktualne_Zlecenia(id);
+			Aktualne_Zlecenia(id_klient);
 
 		}
 	}
@@ -874,7 +884,7 @@ public class Klient extends JPanel {
 
 		public void actionPerformed(ActionEvent event) {
 
-			Aktualizuj_Zakonczone(id);
+			Aktualizuj_Zakonczone(id_klient);
 
 		}
 	}
@@ -887,7 +897,7 @@ public class Klient extends JPanel {
 
 		public void actionPerformed(ActionEvent event) {
 
-			Aktualizuj_Rozliczone(id);
+			Aktualizuj_Rozliczone(id_klient);
 
 		}
 	}
@@ -909,7 +919,7 @@ public class Klient extends JPanel {
 				String queryString = "select max(f.ID_Faktura) as numer FROM klient k, konto ko, "
 						+ "faktura f, faktura_dodatkowe fd where f.ID_Faktura_Dodatkowe = "
 						+ "fd.ID_Faktura_Dodatkowe and fd.ID_Klient = k.ID_Klient and k.ID_Konto = "
-						+ "ko.ID_Konto and ko.ID_Konto = '" + id + "'";
+						+ "ko.ID_Konto and ko.ID_Konto = '" + id_konto + "'";
 				
 				Statement statement = conn.createStatement();
 				ResultSet rs = statement.executeQuery(queryString);// wykonanie
@@ -918,7 +928,7 @@ public class Klient extends JPanel {
 					
 					if(rs.getInt("numer") > 0){
 			
-			Faktura f = new Faktura(id);
+			Faktura f = new Faktura(id_konto);
 			f.setVisible(true);
 			
 					}

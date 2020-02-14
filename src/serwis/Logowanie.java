@@ -27,7 +27,8 @@ public class Logowanie extends JFrame {
 	public Connection conn;
 	public Statement statement;
 	public String konto;
-	public String id;
+	public String id_konto;
+	public String id_klient;
 	private JPanel panel;// tworzenie i utawienie panelu (tsa)
 
 	public Logowanie() {// konstruktor
@@ -146,6 +147,12 @@ public class Logowanie extends JFrame {
 			Statement statement = conn.createStatement();
 			ResultSet rs = statement.executeQuery(queryString);// wykonanie
 																// zapytanie
+
+//			String queryString2 = "select kl.ID_Klient, k.Login, k.Haslo, k.Status from klient kl join konto k on kl.ID_Konto = k.ID_Konto";
+//			
+//			Statement statement2 = conn.createStatement();
+//			ResultSet rs2 = statement2.executeQuery(queryString2);
+			
 			String nazwaw = textField.getText();// pobieranie loginu
 
 			@SuppressWarnings("deprecation")
@@ -165,11 +172,13 @@ public class Logowanie extends JFrame {
 						&& rs.getString("Status").equals("1")) {// weryfikacja
 																// danych
 					// System.out.println("zalogowany");
-					// System.out.println(rs.getString("ID_Konto"));
+					
+					System.out.println(rs.getString("ID_Klient"));
 
 					konto = rs.getString("Login");
-					id = rs.getString("ID_Konto");
-					Klient kl = new Klient(konto, id);
+					id_konto = rs.getString("ID_Konto");
+					id_klient = rs.getString("ID_Klient");
+					Klient kl = new Klient(konto, id_klient, id_konto);
 					// System.out.println(id);
 
 					Klient.GUI();
@@ -217,9 +226,9 @@ public class Logowanie extends JFrame {
 					// System.out.println(rs.getString("Status"));
 
 					konto = rs.getString("Login");
-					id = rs.getString("ID_Konto");
+					id_konto = rs.getString("ID_Konto");
 
-					Serwisant s = new Serwisant(konto, id);
+					Serwisant s = new Serwisant(konto, id_konto);
 					// System.out.println(konto);
 
 					s.setVisible(true);
