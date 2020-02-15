@@ -425,7 +425,7 @@ public class Rejestracja extends JFrame {
 //			rs.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 	}

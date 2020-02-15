@@ -30,8 +30,8 @@ public class EnkoderDecocer {
 
 //	public static void main(String aargs []) {
 //		
-//		System.out.println(encodePassw("Janusz"));
+//		System.out.println(encodePassw("???"));
 //		
-//		System.out.print(decodePassw("Tkx }?"));
+//		System.out.print(decodePassw("???"));
 //	}
 }
