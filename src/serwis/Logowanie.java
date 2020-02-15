@@ -173,7 +173,7 @@ public class Logowanie extends JFrame {
 																// danych
 					// System.out.println("zalogowany");
 					
-					System.out.println(rs.getString("ID_Klient"));
+//					System.out.println(rs.getString("ID_Klient"));
 
 					konto = rs.getString("Login");
 					id_konto = rs.getString("ID_Konto");

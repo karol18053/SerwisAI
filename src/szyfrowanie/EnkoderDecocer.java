@@ -28,4 +28,10 @@ public class EnkoderDecocer {
 		return result;
 	}
 
+//	public static void main(String aargs []) {
+//		
+//		System.out.println(encodePassw("Janusz"));
+//		
+//		System.out.print(decodePassw("Tkx }?"));
+//	}
 }

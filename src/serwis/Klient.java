@@ -521,7 +521,7 @@ public class Klient extends JPanel {
 					+ "z.Rodzaj_Naprawy, zd.ID_Klient from zlecenie z, zlecenie_dodatkowe zd, konto k, "
 					+ "klient kl where z.ID_Zlecenie_Dodatkowe = zd.ID_Zlecenie_Dodatkowe and "
 					+ "k.ID_Konto = kl.ID_Konto and zd.ID_Klient = kl.ID_Klient and "
-					+ "k.ID_Konto ='" + id_klient + "'";// zapytanie
+					+ "kl.ID_Klient ='" + id_klient + "'";// zapytanie
 																													// wyciagajace
 																													// odp.
 																													// dane

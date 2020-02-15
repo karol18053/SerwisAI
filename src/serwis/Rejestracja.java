@@ -357,8 +357,8 @@ public class Rejestracja extends JFrame {
 
 		try {
 
-			String id_tabele = "select max(k.ID_Konto)+1 as konto, max(dk.ID_Dodatkowe_Klient)+1 as dklient, "
-					+ "max(ak.ID_Adres_Klient)+1 as aklient from konto k, dodatkowe_klient dk, adres_klient ak";// zapytanie
+			String id_tabele = "SELECT MAX(k.ID_Konto) +1 AS konto, MAX(dk.ID_Dodatkowe_Klient) +1 AS dklient, MAX(ak.ID_Adres_Klient) +1 "
+					+ "AS aklient, MAX(kl.ID_Klient) +1 AS idklient FROM konto k, dodatkowe_klient dk, adres_klient ak, klient kl";// zapytanie
 																												// wyciągające
 																												// odp.
 																												// dane
@@ -381,11 +381,14 @@ public class Rejestracja extends JFrame {
 					int kontoK = rs.getInt("konto");
 					int klientD = rs.getInt("dklient");
 					int klientA = rs.getInt("aklient");
+					int klientId = rs.getInt("idklient");
+					
+					rs.close();
 
 					if (haslo.equals(powtorz_haslo)) {
 
-						String konto = "insert into konto (Login, Haslo, Status) values('" + login + "','" + en.encodePassw(haslo)
-								+ "'," + " '1')";
+						String konto = "insert into konto (Login, Haslo, Status, ID_Klient) values('" + login + "','" + en.encodePassw(haslo)
+								+ "'," + " '1', '" + klientId + "')";
 
 						statement.executeUpdate(konto);
 
@@ -419,7 +422,7 @@ public class Rejestracja extends JFrame {
 
 				}
 			}
-			rs.close();
+//			rs.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
