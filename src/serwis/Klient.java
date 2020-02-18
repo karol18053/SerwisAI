@@ -255,7 +255,7 @@ public class Klient extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 								// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 																						// z
 																						// bazą
 
@@ -511,7 +511,7 @@ public class Klient extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizujacej
 								// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 																						// z
 																						// baza
 
@@ -583,7 +583,7 @@ public class Klient extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 		// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");
 
 		try {
 
@@ -682,7 +682,7 @@ public class Klient extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizujacej
 								// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 																						// z
 																						// bazą
 
@@ -758,7 +758,7 @@ public class Klient extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizujacej
 								// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 																						// z
 																						// bazą
 
@@ -822,7 +822,7 @@ public class Klient extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizuj�cej
 								// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 																						// z
 																						// bazą
 
@@ -912,7 +912,7 @@ public class Klient extends JPanel {
 			
 			Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 			// połączenie z bazą
-			baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");
+			baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");
 
 			try {
 				// System.out.println(id_klient);

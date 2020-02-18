@@ -133,7 +133,7 @@ public class Logowanie extends JFrame {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 								// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// Połączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// Połączenie
 																						// z
 																						// bazą
 //		baza.dbConnect("jdbc:mysql://www.mkwk018.cba.pl/mysql/db_structure.php?server=1&db="
@@ -361,7 +361,7 @@ public class Logowanie extends JFrame {
 			try {
 				// Ustawiamy dane dotycz�ce podłączenia
 				conn = DriverManager.getConnection(polaczenieURL);
-				// System.out.println ("Po��czono z baz�");
+				// System.out.println ("Połaczono z bazą");
 			}
 
 			catch (SQLException e) {

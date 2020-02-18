@@ -351,7 +351,7 @@ public class Rejestracja extends JFrame {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 								// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 																						// z
 																						// bazą
 

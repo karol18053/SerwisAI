@@ -630,7 +630,7 @@ public class Kierownik extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 		// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 		// z
 		// bazą
 
@@ -701,7 +701,7 @@ public class Kierownik extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 		// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 		// z
 		// bazą
 
@@ -771,7 +771,7 @@ public class Kierownik extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 		// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 		// z
 		// bazą
 
@@ -834,7 +834,7 @@ public class Kierownik extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 		// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");
 
 		try {
 			statement = conn.createStatement();
@@ -930,7 +930,7 @@ public class Kierownik extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizuj�cej
 		// po��czenie z baz�
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 		// z
 		// bazą
 
@@ -1005,7 +1005,7 @@ public class Kierownik extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizuj�cej
 		// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 		// z
 		// bazą
 
@@ -1071,7 +1071,7 @@ public class Kierownik extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 		// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");
 
 		try {
 			statement = conn.createStatement();
@@ -1113,7 +1113,7 @@ public class Kierownik extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 		// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");
 
 		try {
 			statement = conn.createStatement();
@@ -1155,7 +1155,7 @@ public class Kierownik extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 		// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");
 
 		try {
 			statement = conn.createStatement();
@@ -1207,7 +1207,7 @@ public class Kierownik extends JPanel {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 								// połączenie z baza
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 																					// z
 																					// bazą
 

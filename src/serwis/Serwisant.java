@@ -32,6 +32,7 @@ public class Serwisant extends JFrame {
 	private TextArea textAreaUwagi;
 	private JTextField textFieldNumer_zlecenia;
 	private JTextField textFieldNaleznosc;
+	private TextArea przewidywaniaAI;
 	public JPanel panel;
 	public Connection conn;
 	public Statement statement;
@@ -86,7 +87,7 @@ public class Serwisant extends JFrame {
 		lblAktualne.setBounds(50, 25, 400, 40);
 		lblAktualne.setForeground(Color.BLACK);
 		panel.add(lblAktualne);
-		
+
 		Aktualizuj_Aktualne_Serwisy(id);
 
 		panel.add(Aktualizuj_Aktualne());
@@ -107,13 +108,13 @@ public class Serwisant extends JFrame {
 		JLabel lblNaleznosc = new JLabel("Należność za serwis");// wyświetlany
 																// text
 		lblNaleznosc.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblNaleznosc.setBounds(450, 330, 400, 40);
+		lblNaleznosc.setBounds(500, 330, 400, 40);
 		lblNaleznosc.setForeground(Color.BLACK);
 		panel.add(lblNaleznosc);
 
 		textFieldNaleznosc = new JTextField();
 		textFieldNaleznosc.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textFieldNaleznosc.setBounds(450, 380, 150, 25);
+		textFieldNaleznosc.setBounds(500, 380, 150, 25);
 		panel.add(textFieldNaleznosc);
 		textFieldNaleznosc.setColumns(20);
 
@@ -128,8 +129,22 @@ public class Serwisant extends JFrame {
 		textAreaUwagi.setForeground(Color.BLACK);
 		textAreaUwagi.setFont(new Font("Dialog", Font.PLAIN, 14));
 		textAreaUwagi.setRows(5);
-		textAreaUwagi.setBounds(50, 470, 920, 160);
+		textAreaUwagi.setBounds(50, 470, 400, 160);
 		panel.add(textAreaUwagi);
+
+		JLabel lblPodpowiedzAI = new JLabel("Przewidywania AI");// wyświetlany
+		// text
+		lblPodpowiedzAI.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblPodpowiedzAI.setBounds(500, 420, 400, 40);
+		lblPodpowiedzAI.setForeground(Color.GREEN);
+		panel.add(lblPodpowiedzAI);
+		
+		przewidywaniaAI = new TextArea();
+		przewidywaniaAI.setForeground(Color.BLACK);
+		przewidywaniaAI.setFont(new Font("Dialog", Font.PLAIN, 14));
+		przewidywaniaAI.setRows(5);
+		przewidywaniaAI.setBounds(500, 470, 400, 160);
+		panel.add(przewidywaniaAI);
 
 		// dodanie przycisku
 		JButton btnZrobione = new JButton("Zrobione");// przycisk zaloguj
@@ -170,21 +185,19 @@ public class Serwisant extends JFrame {
 		Serwisant.konto = konto;
 	}
 
-	/*
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-
-				Serwisant frame = new Serwisant(getKonto(), getId());
-				frame.setVisible(true);
-
-			}
-		});
-
-	}
-	*/
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//
+//				Serwisant frame = new Serwisant(getKonto(), getId());
+//				frame.setVisible(true);
+//
+//			}
+//		});
+//
+//	}
 
 	private class PrzyciskListenerAktualizujAktualne implements ActionListener {// klasa
 																				// realizująca
@@ -233,10 +246,10 @@ public class Serwisant extends JFrame {
 
 		Baza baza = new Baza();// tworzenie obiektu klasy realizującej
 		// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");// łączenie
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");// łączenie
 		// z
 		// bazą
-		
+
 //		int id_kintoint = Integer.parseInt(id_konto);
 //		int id_wynik = id_kintoint - 3;
 //		String id_kontoS
@@ -271,9 +284,9 @@ public class Serwisant extends JFrame {
 
 				while (rs.next()) {
 					if (rs.getInt("Status") == 1) {
-						wierszeA[i++] = new Object[] {rs.getString("ID_Serwis"),
-								rs.getString("Nazwa_Urzadzenia"), rs.getString("MAC"),
-								rs.getString("Opis"), rs.getString("Uwagi"), rs.getString("Rodzaj_Naprawy") };
+						wierszeA[i++] = new Object[] { rs.getString("ID_Serwis"), rs.getString("Nazwa_Urzadzenia"),
+								rs.getString("MAC"), rs.getString("Opis"), rs.getString("Uwagi"),
+								rs.getString("Rodzaj_Naprawy") };
 					}
 				}
 
@@ -298,143 +311,138 @@ public class Serwisant extends JFrame {
 		scrollPane.setViewportView(tableAktualne);
 
 	}
-	
-	public void Zrobione(){
-		
+
+	public void Zrobione() {
+
 		int NrSerwisu = Integer.parseInt(textFieldNumer_zlecenia.getText());
 		int Koszt = Integer.parseInt(textFieldNaleznosc.getText());
-		
+
 		Baza baza = new Baza();// tworzenie obiektu klasy realizujacej
 		// połączenie z bazą
-		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=root&password=");
-		
+		baza.dbConnect("jdbc:mysql://127.0.0.1:3306/serwis_baza?user=serwis&password=tornado4190");
+
 		try {
 			statement = conn.createStatement();
 			String queryString = "select * from serwis, zlecenie";
-			
+
 			ResultSet rs2 = statement.executeQuery(queryString);
 
 			while (rs2.next()) {
 
 				if (NrSerwisu > 0 && rs2.getInt("ID_Serwis") == NrSerwisu && rs2.getInt("Status") == 1) {
-		
-		String zakoncz_serwis = "update serwis set Koszt = '"+ Koszt +"', Uwagi_Serwisanta = '"+ 
-									textAreaUwagi.getText() +"', Status = 2 where Status=1 and ID_Serwis ='"
-				+ NrSerwisu + "'";
-		String zakoncz_zlecenie = "update zlecenie set Status=2 where Status=1 and ID_Zlecenie ='"
-				+ NrSerwisu + "'";
 
-		statement.executeUpdate(zakoncz_serwis);
-		statement.executeUpdate(zakoncz_zlecenie);
-		
-		
+					String zakoncz_serwis = "update serwis set Koszt = '" + Koszt + "', Uwagi_Serwisanta = '"
+							+ textAreaUwagi.getText() + "', Status = 2 where Status=1 and ID_Serwis ='" + NrSerwisu
+							+ "'";
+					String zakoncz_zlecenie = "update zlecenie set Status=2 where Status=1 and ID_Zlecenie ='"
+							+ NrSerwisu + "'";
+
+					statement.executeUpdate(zakoncz_serwis);
+					statement.executeUpdate(zakoncz_zlecenie);
+
 				} else {
-					
-					//new Info();
-					
+
+					// new Info();
+
 				}
-				
-			}	
+
+			}
 			rs2.close();
 
 		} catch (SQLException e) {
 
-			//System.out.println("Błąd odczytu z bazy! " + e.getMessage() + ": " + e.getErrorCode());
+			// System.out.println("Błąd odczytu z bazy! " + e.getMessage() + ": " +
+			// e.getErrorCode());
 			// new Info();//pokazanie komunikatu o niepoprawności danych
-			
-			
+
 		}
-		
+
 		Date data1 = new Date();// pole data
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
 		String data_wyst = format1.format(data1);
 
-		//Date data2 = new Date();// pole data
+		// Date data2 = new Date();// pole data
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
 		calendar.add(Calendar.DAY_OF_MONTH, 7);
 		String data_plat = format2.format(calendar.getTime());
-		
-		
+
 		///////////////////////////
 		try {
 			statement = conn.createStatement();
 			String queryString = "select max(fd.ID_Faktura_Dodatkowe)+1 as "
 					+ "faktura_dod from serwis s, faktura_dodatkowe fd";
-			
+
 			ResultSet rs3 = statement.executeQuery(queryString);
 
 			while (rs3.next()) {
 
 				if (NrSerwisu > 0) {
-		
-		String faktura_dod = "insert into faktura_dodatkowe (ID_Serwis, ID_Klient) VALUES ('" + 
-				NrSerwisu + "','1')";
-		
-		String faktura = "insert into faktura (Kwota_Netto, Data_Wystawienia, Termin_Platnosci, Czy_Zaplacone, "
-				+ "ID_Faktura_Dodatkowe, ID_Dane_Firmy) VALUES ('" + Koszt + "','" + data_wyst + "','" 
-				+ data_plat + "','0','" + rs3.getInt("faktura_dod") + "','1')";
 
-		statement.executeUpdate(faktura_dod);
-		statement.executeUpdate(faktura);
-		
-		
+					String faktura_dod = "insert into faktura_dodatkowe (ID_Serwis, ID_Klient) VALUES ('" + NrSerwisu
+							+ "','1')";
+
+					String faktura = "insert into faktura (Kwota_Netto, Data_Wystawienia, Termin_Platnosci, Czy_Zaplacone, "
+							+ "ID_Faktura_Dodatkowe, ID_Dane_Firmy) VALUES ('" + Koszt + "','" + data_wyst + "','"
+							+ data_plat + "','0','" + rs3.getInt("faktura_dod") + "','1')";
+
+					statement.executeUpdate(faktura_dod);
+					statement.executeUpdate(faktura);
+
 				} else {
-					
-					//new Info();
-					
+
+					// new Info();
+
 				}
-				
-			}	
+
+			}
 			rs3.close();
 
 		} catch (SQLException e) {
 
-			//System.out.println("Błąd odczytu z bazy! " + e.getMessage() + ": " + e.getErrorCode());
+			// System.out.println("Błąd odczytu z bazy! " + e.getMessage() + ": " +
+			// e.getErrorCode());
 			// new Info();//pokazanie komunikatu o niepoprawności danych
-			
-			
+
 		}
-		
+
 		//////////////////////////
 		try {
 			statement = conn.createStatement();
 			String queryString = "SELECT zd.ID_Klient as id_klient FROM serwis s, zlecenie z, zlecenie_dodatkowe zd "
 					+ "WHERE s.ID_Serwis = z.ID_Zlecenie and z.ID_Zlecenie_Dodatkowe = zd.ID_Zlecenie_Dodatkowe "
 					+ "and z.ID_Zlecenie = '" + NrSerwisu + "'";
-			
+
 			ResultSet rs4 = statement.executeQuery(queryString);
 
 			while (rs4.next()) {
 
 				if (NrSerwisu > 0) {
-		
-		String klient_faktura = "update faktura_dodatkowe set ID_Klient = '" + rs4.getInt("id_klient") + 
-				"' where ID_Serwis = '" + NrSerwisu + "'";
-		
-		statement.executeUpdate(klient_faktura);
-		
-		
-		
+
+					String klient_faktura = "update faktura_dodatkowe set ID_Klient = '" + rs4.getInt("id_klient")
+							+ "' where ID_Serwis = '" + NrSerwisu + "'";
+
+					statement.executeUpdate(klient_faktura);
+
 				} else {
-					
-					//new Info();
-					
+
+					// new Info();
+
 				}
-				
-			}	
+
+			}
 			rs4.close();
 
 		} catch (SQLException e) {
 
-			//System.out.println("Błąd odczytu z bazy! " + e.getMessage() + ": " + e.getErrorCode());
+			// System.out.println("Błąd odczytu z bazy! " + e.getMessage() + ": " +
+			// e.getErrorCode());
 			// new Info();//pokazanie komunikatu o niepoprawności danych
-			
-			
+
 		}
-		
+
 		/////////////////////////
-		
+
 	}
 
 	// klasa obs�uguj�ca dzia�anie przycisku
